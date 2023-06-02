@@ -14,14 +14,15 @@ function App() {
     setUser("Valerie");
   }, []);
   return (
-    <div className="App">
+    <div>
       <Header user={user} />
-      <div>
+      <div className="p-3">
         <button onClick={setUserChistophe}>Christophe</button>
         <button onClick={setUserValerie}>Valerie</button>
+
+        {/* <Counter /> */}
+        <UserList />
       </div>
-      {/* <Counter /> */}
-      <UserList />
     </div>
   );
 }
