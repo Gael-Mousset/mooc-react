@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Counter from "./pages/Counter";
 import Header from "./components/Header";
 import UserList from "./pages/UserList";
-import SimLogin from "./components/SimLogin";
+import SimLogin from "./pages/SimLogin";
 import { Route, Routes } from "react-router";
 
 function App() {
