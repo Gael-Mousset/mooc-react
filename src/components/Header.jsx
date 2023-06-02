@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../logo.svg";
 
 function Header(props) {
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => setUser("Gaël"), 1000);
+  }, []);
+
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -28,8 +34,13 @@ function Header(props) {
               </div>
             </li>
           </ul>
+          <div className="navbar-text">Bienvenue {user} !</div>
         </div>
       </nav>
+      <div>
+        <button onClick={() => setUser("Chistophe")}>Christophe</button>
+        <button onClick={() => setUser("Valerie")}>Valerie</button>
+      </div>
     </div>
   );
 }
