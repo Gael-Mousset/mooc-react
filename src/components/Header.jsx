@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import logo from "../logo.svg";
+import { Link } from "react-router-dom";
 
 function Header(props) {
   const login = props.user ? (
@@ -22,16 +23,21 @@ function Header(props) {
             />
             MOOC React
           </div>
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <div className="nav-link active" aria-current="page" href="#">
-                Home
-              </div>
+              <Link to="/" className="nav-link">
+                Users
+              </Link>
             </li>
             <li className="nav-item">
-              <div className="nav-link" href="#">
-                Link
-              </div>
+              <Link to="/counter" className="nav-link">
+                Coumpteur
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
             </li>
           </ul>
           <div className="navbar-text">{login}</div>
