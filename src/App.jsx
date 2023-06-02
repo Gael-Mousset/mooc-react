@@ -2,24 +2,16 @@ import React, { useCallback, useState } from "react";
 // import Counter from "./components/Counter";
 import Header from "./components/Header";
 import UserList from "./pages/UserList";
+import SimLogin from "./components/SimLogin";
 
 function App() {
   const [user, setUser] = useState("");
 
-  const setUserChistophe = useCallback(() => {
-    setUser("Chishophe");
-  }, []);
-
-  const setUserValerie = useCallback(() => {
-    setUser("Valerie");
-  }, []);
   return (
     <div>
       <Header user={user} />
       <div className="p-3">
-        <button onClick={setUserChistophe}>Christophe</button>
-        <button onClick={setUserValerie}>Valerie</button>
-
+        <SimLogin setUser={setUser} />
         {/* <Counter /> */}
         <UserList />
       </div>
