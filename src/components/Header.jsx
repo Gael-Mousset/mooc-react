@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import logo from "../logo.svg";
 
 function Header(props) {
@@ -6,6 +6,13 @@ function Header(props) {
 
   useEffect(() => {
     setTimeout(() => setUser("Gaël"), 1000);
+  }, []);
+
+  const setUserChistophe = useCallback(() => {
+    setUser("Chishophe");
+  }, []);
+  const setUserValerie = useCallback(() => {
+    setUser("Valerie");
   }, []);
 
   return (
@@ -38,8 +45,8 @@ function Header(props) {
         </div>
       </nav>
       <div>
-        <button onClick={() => setUser("Chistophe")}>Christophe</button>
-        <button onClick={() => setUser("Valerie")}>Valerie</button>
+        <button onClick={setUserChistophe}>Christophe</button>
+        <button onClick={setUserValerie}>Valerie</button>
       </div>
     </div>
   );
