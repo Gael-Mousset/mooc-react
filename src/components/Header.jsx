@@ -11,7 +11,7 @@ function Header(props) {
 
   return (
     <div>
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+      <nav className="navbar navbar-dark bg-dark navbar-expand-md">
         <div className="container-fluid">
           <div className="navbar-brand" href="#">
             <img

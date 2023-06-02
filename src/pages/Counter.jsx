@@ -16,8 +16,18 @@ function Counter(props) {
     <div>
       {counter} : le compteur est {counter % 2 ? "impair" : "pair"}
       <br />
-      <button onClick={() => histoCounter(counter - 1)}>-</button>
-      <button onClick={() => histoCounter(counter + 1)}>+</button>
+      <button
+        onClick={() => histoCounter(counter - 1)}
+        className="btn btn-danger me-1"
+      >
+        -
+      </button>
+      <button
+        onClick={() => histoCounter(counter + 1)}
+        className="btn btn-success"
+      >
+        +
+      </button>
       {historique.map((histo, index) => (
         <div key={index}>
           Valeur {index} : {histo}
