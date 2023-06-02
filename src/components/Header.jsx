@@ -4,16 +4,19 @@ import logo from "../logo.svg";
 function Header(props) {
   const [user, setUser] = useState("");
 
-  useEffect(() => {
-    setTimeout(() => setUser("Gaël"), 1000);
-  }, []);
-
   const setUserChistophe = useCallback(() => {
     setUser("Chishophe");
   }, []);
+
   const setUserValerie = useCallback(() => {
     setUser("Valerie");
   }, []);
+
+  const login = user ? (
+    <span>Bienvenue {user} !</span>
+  ) : (
+    <span>Connecter-vous !</span>
+  );
 
   return (
     <div>
@@ -41,7 +44,7 @@ function Header(props) {
               </div>
             </li>
           </ul>
-          <div className="navbar-text">Bienvenue {user} !</div>
+          <div className="navbar-text">{login}</div>
         </div>
       </nav>
       <div>
