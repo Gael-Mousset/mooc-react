@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import UserList from "./pages/UserList";
 import SimLogin from "./pages/SimLogin";
 import { Route, Routes } from "react-router";
+import Roles from "./pages/Roles";
 
 function App() {
   const [user, setUser] = useState("");
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<UserList />} />
           <Route path="/counter" element={<Counter />} />
           <Route path="/login" element={<SimLogin setUser={setUser} />} />
+          <Route path="/roles" element={<Roles setUser={setUser} />} />
         </Routes>
       </div>
     </div>
