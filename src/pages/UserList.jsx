@@ -29,7 +29,14 @@ function UserList(props) {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((result) => setUsers(result.data));
-  });
+  }, []);
+
+  const deleteUser = useCallback(
+    (userId) => {
+      setUsers(users.filter((user) => user.id !== userId));
+    },
+    [users]
+  );
 
   return (
     <div>
@@ -44,7 +51,7 @@ function UserList(props) {
         <div className="row mt-3">
           {filteredUsers.map((user, index) => (
             <div key={index} className="col-lg-3 col-md-4 col-xs-6 mb-3">
-              <UserProfile user={user} />
+              <UserProfile user={user} deleteUser={deleteUser} />
             </div>
           ))}
           <div className="col-lg-3 col-md-4 col-xs-6 mb-3 d-flex justify-content-center align-items-center">

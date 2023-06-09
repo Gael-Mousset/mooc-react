@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 function UserProfile(props) {
+  const hendleClick = useCallback(() => {
+    axios.delete("https://jsonplaceholder.typicode.com/users/" + props.user.id);
+    props.deleteUser(props.user.id);
+  }, [props]);
   return (
     <div>
       <div className="card">
@@ -16,6 +21,11 @@ function UserProfile(props) {
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
+          <div className="d-flex justify-content-end">
+            <button className="btn btn-primary" onClick={hendleClick}>
+              <i className="bi bi-trash3"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -23,7 +33,8 @@ function UserProfile(props) {
 }
 
 UserProfile.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.object.isRequired,
+  deleteUser: PropTypes.func.isRequired,
 };
 
 export default UserProfile;
