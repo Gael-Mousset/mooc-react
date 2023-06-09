@@ -32,10 +32,10 @@ function Register(props) {
     setCountry(event.target.value);
   }, []);
   const handleSubmit = useCallback(
-    (event) => {
+    async (event) => {
       try {
         event.preventDefault();
-        axios.post("https://jsonplaceholder.typicode.com/users", {
+        await axios.post("https://jsonplaceholder.typicode.com/users", {
           name,
           email,
           password,
