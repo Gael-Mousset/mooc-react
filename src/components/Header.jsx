@@ -3,11 +3,11 @@ import logo from "../logo.svg";
 import { Link } from "react-router-dom";
 
 function Header(props) {
-  const login = props.user ? (
-    <span>Bienvenue {props.user} !</span>
-  ) : (
-    <span>Connecter-vous !</span>
-  );
+  // const login = props.user ? (
+  //   <span>Bienvenue {props.user} !</span>
+  // ) : (
+  //   <span>Connecter-vous !</span>
+  // );
 
   return (
     <div>
@@ -34,18 +34,28 @@ function Header(props) {
                 Coumpteur
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
-            </li>
+            <li className="nav-item"></li>
             <li className="nav-item">
               <Link to="/roles" className="nav-link">
                 Roles
               </Link>
             </li>
           </ul>
-          <div className="navbar-text">{login}</div>
+          <div className="navbar-text text-center">
+            {props.user ? (
+              <div> Bienvenue {props.user}</div>
+            ) : (
+              <div>
+                <Link to="/login" className="nav-link">
+                  Connectez-vous !
+                </Link>
+                ou
+                <Link to="/register" className="nav-link">
+                  Inscrivez-vous !
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </nav>
     </div>
