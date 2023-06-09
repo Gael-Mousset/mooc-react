@@ -11,7 +11,7 @@ function UserProfile(props) {
           alt="..."
         />
         <div className="card-body">
-          <h5 className="card-title">{props.user}</h5>
+          <h5 className="card-title">{props.user.name}</h5>
           <p className="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
@@ -23,7 +23,7 @@ function UserProfile(props) {
 }
 
 UserProfile.propTypes = {
-  user: PropTypes.string,
+  user: PropTypes.object,
 };
 
 export default UserProfile;

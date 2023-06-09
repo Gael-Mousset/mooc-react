@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import UserProfile from "../components/UserProfile";
+import axios from "axios";
 
 function UserList(props) {
-  const users = ["Eva", "Aude", "Anne", "Marc", "Dorian"];
-
   const [criteria, setCriteria] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const handlSearch = useCallback((event) => {
     setCriteria(event.target.value);
@@ -14,10 +14,22 @@ function UserList(props) {
   useEffect(() => {
     setFilteredUsers(
       users.filter((user) =>
-        user.toLowerCase().includes(criteria.toLowerCase())
+        user.name.toLowerCase().includes(criteria.toLowerCase())
       )
     );
-  }, [criteria]);
+  }, [criteria, users]);
+
+  useEffect(() => {
+    // version Fatch
+    // fetch("https://jsonplaceholder.typicode.com/users")
+    //   .then((res) => res.json())
+    //   .then((result) => setUsers(result));
+
+    //version axios
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((result) => setUsers(result.data));
+  });
 
   return (
     <div>
