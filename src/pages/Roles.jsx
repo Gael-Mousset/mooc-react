@@ -25,6 +25,7 @@ function Roles(props) {
   }, [criteria]);
   return (
     <div>
+      <h1>Liste des rôles</h1>
       <input
         type="text"
         placeholder="Recherche"
