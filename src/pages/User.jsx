@@ -11,9 +11,13 @@ function User(props) {
       .get("https://jsonplaceholder.typicode.com/users/" + id)
       .then((result) => setUser(result.data));
   }, [id]);
-  return (
-    <div>
-      <UserProfile user={user} complete />
+  return user.id ? (
+    <UserProfile user={user} complete />
+  ) : (
+    <div className="col-lg-3 col-md-4 col-xs-6 mb-3 d-flex justify-content-center align-items-center">
+      <div className="spinner-border text-primary" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
     </div>
   );
 }
