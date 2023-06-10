@@ -9,7 +9,7 @@ function Counter(props) {
       setHistorique([...historique, counter]);
       setCounter(newCount);
     },
-    [counter]
+    [counter, historique]
   );
 
   return (
