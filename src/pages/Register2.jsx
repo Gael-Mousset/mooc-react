@@ -25,13 +25,16 @@ function Register(props) {
           validationSchema={Yup.object({
             name: Yup.string()
               .required("Un nom est nécessaire")
-              .min(2, "Votre nom doit comporter au moin 2 caractères")
+              .min(2, "Votre nom doit comporter au moins 2 caractères")
               .max(50, "Votre nom ne doit pas dépasser 50 caractère "),
             email: Yup.string().required().email("Entrez un email valide"),
             password: Yup.string()
               .required("Un mot de passe est nécessaire")
-              .min(8, "Le mot de passe doit comporter au moin 8 carractère"),
-            country: Yup.string().required(),
+              .min(
+                8,
+                "Votre mot de passe doit comporter au moins 8 caractères"
+              ),
+            country: Yup.string().required("Sélectionnez votre pays"),
           })}
           onSubmit={async (values, { setSubmitting }) => {
             try {
@@ -115,6 +118,7 @@ function Register(props) {
               </div>
               <div className="d-grid">
                 <button
+                  type="submit"
                   className="btn btn-primary btn-expand"
                   disabled={isSubmitting}
                 >
