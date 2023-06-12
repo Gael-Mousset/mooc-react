@@ -6,12 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter } from "react-router-dom";
+import { ContextProvider } from "./context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ContextProvider>
+        <App />
+      </ContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,6 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { Context } from "../context";
+import classnames from "classnames";
 
 function UserProfile(props) {
   const hendleDelete = useCallback(
@@ -13,8 +15,13 @@ function UserProfile(props) {
     },
     [props]
   );
+  const { context } = useContext(Context);
   return (
-    <div>
+    <div
+      className={classnames("card bg-" + context.theme, {
+        "text-light": context.theme === "dark",
+      })}
+    >
       <div className="card">
         <img
           src="https://images.unsplash.com/photo-1588152850700-c82ecb8ba9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
