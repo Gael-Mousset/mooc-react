@@ -1,11 +1,13 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { Context } from "../context";
 
-function Register(props) {
+function Register() {
   const [countries, setCountries] = useState([]);
+  const { dispatch } = useContext(Context);
   useEffect(() => {
     axios
       .get(
@@ -46,7 +48,7 @@ function Register(props) {
                 country,
               });
               setSubmitting(false);
-              props.setUser(name);
+              dispatch({ type: "setUser", payload: values });
               navigate("/");
             } catch (error) {
               console.error(error);

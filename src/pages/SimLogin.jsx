@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Context } from "../context";
 
 const fakeAxios = {
   post: (url, data) => {
@@ -11,7 +12,7 @@ const fakeAxios = {
       if (data.login === "MONLOGIN" && data.password === "MONPASSWORD") {
         return Promise.resolve({
           status: 200,
-          data: { token: "xxx.yyy.zzz" },
+          data: { token: "xxx.yyy.zzz", user: { name: data.login } },
         });
       } else {
         return Promise.reject({
@@ -24,8 +25,9 @@ const fakeAxios = {
   },
 };
 
-function SimLogin(props) {
+function SimLogin() {
   const [authError, setAuthError] = useState("");
+  const { dispatch } = useContext(Context);
   const navigate = useNavigate();
 
   return (
@@ -54,7 +56,10 @@ function SimLogin(props) {
               axios.defaults.headers.common[
                 "Authorization"
               ] = `Bearer: ${response.data.token}`;
-              props.setUser(login);
+              dispatch({
+                type: "setUser",
+                payload: response.data.user,
+              });
               navigate("/");
             } catch (error) {
               if (error.status === 401) {
